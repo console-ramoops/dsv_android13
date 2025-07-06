@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setting up
         run: |
@@ -23,7 +23,7 @@ jobs:
 
       - name: Set up Time
         run: |
-          echo "Setting Indian timezone"
+          echo "Setting India timezone"
           sudo timedatectl set-timezone Asia/Kolkata
 
       - name: Download Services.jar
@@ -35,10 +35,8 @@ jobs:
           sudo chmod -R 777 .
           ./bhlnk.sh
 
-      - name: Upload Patched Services.jar
-        uses: actions/upload-artifact@v3
+      - name: Upload Patched Artifact
+        uses: actions/upload-artifact@v4
         with:
           name: services_patched_bhlnk
-          path: ./module/*
-          if-no-files-found: error
-          
+          path: ./module/
